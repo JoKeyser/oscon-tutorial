@@ -4,6 +4,7 @@ Oct 28, 2015
 
 ## Tips for teachers
 * If you do `git init FOLDER`, you have to *change into that `FOLDER`* to do more `git` commands.
+* The only way to truly lose data is with `git reset --hard`, which will erase only the work in *Staging* and *Working Directory*. Nothing in *History* is lost.
 
 ## Git config
 All is saved in `.git/config`, which you can edit directly as well.
@@ -61,22 +62,31 @@ On your local repository, you have to `git pull` (or more cautiously, `git fetch
 Here, we had drawings about differences between `master`, `origin/master`, and the remote `master`.
 Also, `origin` is just a common alias for the remote location; you could always write the entire URL, but that's annoying.
 
-### Branching off
+### Branching off and merging again
 
 ```
 git branch -vv
 git branch BRANCHNAME
 git checkout BRANCHNAME
+git push --set-upstream origin BRANCHNAME
 ```
 
-TODO: push to a separate branch on remote.
-
+Again, the use of `--set-upstream` makes clear that you want to push to the same branch on the remote.
 Git's old behaviour of pushing was `matching`, now it's `simple`. Recommmended best practice:
 ```
 git config --global push.default simple
 ```
-
 Note that deleting a branch on one location does *not* lead to deletion at any other location.
+
+Easy merging the feature branch with *master*:
+```
+git checkout master
+git merge BRANCHNAME
+```
+
+#### Merge conflicts
+Option 1: Run away, `git merge --abort`.
+Option 2: 
 
 ### Git log tricks
 Git uses SHA-1 hashes to refer to commits.
