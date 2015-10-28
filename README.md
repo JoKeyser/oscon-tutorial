@@ -27,11 +27,24 @@ Note that after file editing, `git status` show the file again in *Changes not s
 
 INSERT EXPLANATION of *Working Directory*, *Staging Area*, and *History*.
 
-You can select specific *hunks* from the Working Directory to the Staging Area. 
+You can select specific *hunks* from the Working Directory to the Staging Area.
 ```
 git add -p
 ```
+If you reject one or more hunks, or change the file after `git add`, you'll see that in `git status` in both *Staging* and *not staged for commit*.  
+Git does not work on a file-basis, but on a patch-basis.
+It does not think about files, but about content.
 
+The differences between
+* `git diff` shows difference between Staging and Working
+* `git diff --staged`
+* `git diff HEAD`
+
+SETTING UP OF REMOTE REPOSITORY
+
+```
+git remote add origin URL.git
+```
 
 ## Tips for teachers
 * If you do `git init FOLDER`, you have to *change into that `FOLDER`* to do more `git` commands.
