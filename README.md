@@ -27,7 +27,7 @@ Note that after file editing, `git status` show the file again in *Changes not s
 
 INSERT EXPLANATION of *Working Directory*, *Staging Area*, and *History*.
 
-You can select specific *hunks* from the Working Directory to the Staging Area.
+You can select specific *hunks* from the Working Directory to the Staging Area:
 ```
 git add -p
 ```
@@ -44,7 +44,11 @@ SETTING UP OF REMOTE REPOSITORY
 
 ```
 git remote add origin URL.git
+git push origin master
+git push -u origin master
 ```
+
+
 
 ## Tips for teachers
 * If you do `git init FOLDER`, you have to *change into that `FOLDER`* to do more `git` commands.
