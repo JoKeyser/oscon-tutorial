@@ -76,17 +76,20 @@ Git's old behaviour of pushing was `matching`, now it's `simple`. Recommmended b
 ```
 git config --global push.default simple
 ```
-Note that deleting a branch on one location does *not* lead to deletion at any other location.
+Once your branches diverged, `git checkout` will change the *Working Directory*, that is, all tracked files' content.
+Also note that deleting a branch (`git branch -d`) on one location does *not* lead to deletion at any other location.
+Keep in mind that branches are merely pointers to commits.
 
 Easy merging the feature branch with *master*:
 ```
 git checkout master
 git merge BRANCHNAME
 ```
+You can use `git merge --not-ff` to force commit messages for that merge.  
 
 #### Merge conflicts
 Option 1: Run away, `git merge --abort`.
-Option 2: 
+Option 2: Dammit, missed it! TODO!
 
 ### Git log tricks
 Git uses SHA-1 hashes to refer to commits.
@@ -96,3 +99,5 @@ Thus it created unique enough identifiers without any order; that's a feature in
 ```
 git log --online --decorate --all --graph
 ```
+
+#### Forking from GitHub...
