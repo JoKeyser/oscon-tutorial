@@ -1,12 +1,18 @@
 # OSCON tutorial: Git and GitHub Fundamentals
 Oct 28, 2015
 
+
+## Tips for teachers
+* If you do `git init FOLDER`, you have to *change into that `FOLDER`* to do more `git` commands.
+
 ## Git config
+All is saved in `.git/config`, which you can edit directly as well.
 ```
 git config --list
 git config user.name "Franciscus Cornelis Donders"
 git config user.email f.donders@donders.ru.nl
 git config core.editor vim
+git config --global push.default simple
 ```
 
 ## Flow of tutorial
@@ -40,17 +46,43 @@ The differences between
 * `git diff --staged`
 * `git diff HEAD`
 
-SETTING UP OF REMOTE REPOSITORY
+### Interacting with a remote repository
 
 ```
 git remote add origin URL.git
 git push --set-upstream origin master
 ```
-The option `--set-upstream` clarifies that the local *master* branch is tracking the remote *master* branch. 
+The option `--set-upstream` clarifies that the local *master* branch is tracking the remote *master* branch.
 
-GitHub, GitLab, etc. offer web-interfaces to edit files.
-A nice choice is the Markdown format, which automatically gets rendered nicely. 
-On your local repository, you have to `git pull` (or more cautiously, `git fetch`, `git merge`) the remote changes to your computer. 
+Websites like GitHub, GitLab, etc. offer simple interfaces to edit files.
+A nice choice is the Markdown format, which automatically gets rendered nicely.
+On your local repository, you have to `git pull` (or more cautiously, `git fetch`, `git merge`) the remote changes to your computer.
 
-## Tips for teachers
-* If you do `git init FOLDER`, you have to *change into that `FOLDER`* to do more `git` commands.
+Here, we had drawings about differences between `master`, `origin/master`, and the remote `master`.
+Also, `origin` is just a common alias for the remote location; you could always write the entire URL, but that's annoying.
+
+### Branching off
+
+```
+git branch -vv
+git branch BRANCHNAME
+git checkout BRANCHNAME
+```
+
+TODO: push to a separate branch on remote.
+
+Git's old behaviour of pushing was `matching`, now it's `simple`. Recommmended best practice:
+```
+git config --global push.default simple
+```
+
+Note that deleting a branch on one location does *not* lead to deletion at any other location.
+
+### Git log tricks
+Git uses SHA-1 hashes to refer to commits.
+Hashes include the content, the time, and the author of a commit.
+Thus it created unique enough identifiers without any order; that's a feature in distributed settings with many authors.
+
+```
+git log --online --decorate --all --graph
+```
