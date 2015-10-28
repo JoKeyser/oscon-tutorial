@@ -48,7 +48,9 @@ git push --set-upstream origin master
 ```
 The option `--set-upstream` clarifies that the local *master* branch is tracking the remote *master* branch. 
 
-
+GitHub, GitLab, etc. offer web-interfaces to edit files.
+A nice choice is the Markdown format, which automatically gets rendered nicely. 
+On your local repository, you have to `git pull` (or more cautiously, `git fetch`, `git merge`) the remote changes to your computer. 
 
 ## Tips for teachers
 * If you do `git init FOLDER`, you have to *change into that `FOLDER`* to do more `git` commands.
