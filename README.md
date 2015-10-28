@@ -44,9 +44,9 @@ SETTING UP OF REMOTE REPOSITORY
 
 ```
 git remote add origin URL.git
-git push origin master
-git push -u origin master
+git push --set-upstream origin master
 ```
+The option `--set-upstream` clarifies that the local *master* branch is tracking the remote *master* branch. 
 
 
 
